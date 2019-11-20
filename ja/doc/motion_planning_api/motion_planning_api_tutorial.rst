@@ -3,43 +3,43 @@ Motion Planning API
 .. image:: motion_planning_api_tutorial_robot_move_arm_1st.png
    :width: 700px
 
-In MoveIt, the motion planners are loaded using a plugin infrastructure. This
-allows MoveIt to load motion planners at runtime. In this example, we will
-run through the C++ code required to do this.
+MoveItではモーションプランナーはプラグイン基盤を用いてロードされます．これにより，MoveItは実行時にモーションプランナーをロードすることを可能とします．
+このサンプルではこれを実現するために必要なC++コードを見ていきます．
 
-Getting Started
+
+はじめに
 ---------------
-If you haven't already done so, make sure you've completed the steps in `Getting Started <../getting_started/getting_started.html>`_.
+もしまだ済ましていなければ，まず `はじめに <../getting_started/getting_started.html>`_ から始めてください.
 
-Running the Demo
+デモの実行
 ----------------
-Open two shells. In the first shell start RViz and wait for everything to finish loading: ::
+シェルを２つ開き，1つ目のシェルでRVizを立ち上げ，全てが立ち上がるまで待ちます．: ::
 
   roslaunch panda_moveit_config demo.launch
 
-In the second shell, run the launch file: ::
+2つ目のシェルではlaunchファイルを立ち上げます: ::
 
   roslaunch moveit_tutorials motion_planning_api_tutorial.launch
 
-**Note:** This tutorial uses the **RvizVisualToolsGui** panel to step through the demo. To add this panel to RViz, follow the instructions in the `Visualization Tutorial <../quickstart_in_rviz/quickstart_in_rviz_tutorial.html#rviz-visual-tools>`_.
 
-After a short moment, the RViz window should appear and look similar to the one at the top of this page. To progress through each demo step either press the **Next** button in the **RvizVisualToolsGui** panel at the bottom of the screen or select **Key Tool** in the **Tools** panel at the top of the screen and then press **N** on your keyboard while RViz is focused.
+**注意:** このチュートリアルでは **RvizVisualToolsGui** パネルをデモを通して用います．このパネルをRVizに追加するには， `Visualization Tutorial <../quickstart_in_rviz/quickstart_in_rviz_tutorial.html#rviz-visual-tools>`_　の指示に従ってください．
+
+しばらく経った後，ページ冒頭の画像にあるようなRVizのウィンドウが表示されます．デモの各ステップを続けるには，画面下部の**RvizVisualToolsGui**パネルの**Next**ボタンをクリックするかまたは，画面上部の**Tools**パネル内の**Key Tool**を選択し，RViz上でキーボードの **N**を押してください．
 
 
-Expected Output
+想定される出力
 ---------------
-In RViz, we should be able to see four trajectories being replayed eventually:
-
- 1. The robot moves its arm to the first pose goal,
+RViz上で以下の4つの軌道がリプレイされるのが見られるはずです:
+ 1. ロボットがアームを最初の目標位置に移動
 
     |A|
 
- 2. The robot moves its arm to the joint goal,
+ 2. ロボットがアームをジョイント目標位置に移動
 
     |B|
 
- 3. The robot moves its arm back to the original pose goal,
- 4. The robot moves its arm to a new pose goal while maintaining the end-effector level.
+ 3. ロボットがアームを元の目標位置に戻す
+ 4. ロボットがエンドエフェクタの位置を保ちながら，アームを新規目標位置に移動
 
     |C|
 
@@ -50,12 +50,14 @@ In RViz, we should be able to see four trajectories being replayed eventually:
 .. |C| image:: motion_planning_api_tutorial_robot_move_arm_3rd.png
                :width: 200px
 
-The Entire Code
+コード全容
 ---------------
-The entire code can be seen :codedir:`here in the moveit_tutorials GitHub project<motion_planning_api>`.
+コード全体は:codedir:`こちらの moveit_tutorials のGitHubリポジトリ<motion_planning_api>`から確認出来ます．
 
 .. tutorial-formatter:: ./src/motion_planning_api_tutorial.cpp
 
-The Launch File
+Launch ファイル
 ---------------
-The entire launch file is :codedir:`here <motion_planning_api/launch/motion_planning_api_tutorial.launch>` on GitHub. All the code in this tutorial can be compiled and run from the moveit_tutorials package.
+すべてのLaunchファイルはGitHub上の :codedir:`こちら<motion_planning_api/launch/motion_planning_api_tutorial.launch>`
+から確認できます．また，本チュートリアルに記載されているすべてのソースコードは，MoveItのセットアップ時にダウンロードしてきた
+``moveit_tutorials`` パッケージに格納されているものを実行しています．

@@ -1,8 +1,8 @@
 Pick and Place
 ==============
 
-In MoveIt, grasping is done using the MoveGroup interface. In order to grasp an object we need to create ``moveit_msgs::Grasp`` msg which will allow defining the various poses and postures involved in a grasping operation.
-Watch this video to see the output of this tutorial:
+MoveItでは，MoveGraspインターフェースを用いて把持が実行されます．物体を把持するためには，把持操作に含まれる様々な位置や姿勢を定義することを可能とする``moveit_msgs::Grasp`` msgを作成する必要があります．
+このチュートリアルの出力は以下の動画のようなものとなります．:
 
 .. raw:: html
 
@@ -10,38 +10,42 @@ Watch this video to see the output of this tutorial:
         <iframe width="700px" height="400px" src="https://www.youtube.com/embed/QBJPxx_63Bs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
-Getting Started
+はじめに
 ---------------
-If you haven't already done so, make sure you've completed the steps in `Getting Started <../getting_started/getting_started.html>`_.
+もしまだ済ましていなければ，まず `はじめに <../getting_started/getting_started.html>`_ から始めてください.
 
-Running The Demo
+デモの実行
 ----------------
-Open two terminals. In the first terminal start RViz and wait for everything to finish loading: ::
+ターミナルを２つ開き，1つ目のシェルでRVizを立ち上げ，全てが立ち上がるまで待ちます．: ::
 
     roslaunch panda_moveit_config demo.launch
 
-In the second terminal run the pick and place tutorial: ::
+2つ目のターミナルでは，pick and placeのチュートリアルを実行します．: ::
 
     rosrun moveit_tutorials pick_place_tutorial
 
-You should see something similar to the video at the beginning of this tutorial.
+このチュートリアル冒頭の動画のような出力が得られるはずです．
 
-Understanding ``moveit_msgs::Grasp``
+``moveit_msgs::Grasp``の理解
 ------------------------------------
-For complete documentation refer to `moveit_msgs/Grasp.msg. <http://docs.ros.org/melodic/api/moveit_msgs/html/msg/Grasp.html>`_
+ドキュメント全体は`こちら moveit_msgs/Grasp.msg. <http://docs.ros.org/melodic/api/moveit_msgs/html/msg/Grasp.html>`_
 
-The relevant fields of the message are:-
+関連するmessage群：
 
-* ``trajectory_msgs/JointTrajectory pre_grasp_posture`` - This defines the trajectory position of the joints in the end effector group before we go in for the grasp.
-* ``trajectory_msgs/JointTrajectory grasp_posture`` - This defines the trajectory position of the joints in the end effector group for grasping the object.
-* ``geometry_msgs/PoseStamped grasp_pose`` - Pose of the end effector in which it should attempt grasping.
-* ``moveit_msgs/GripperTranslation pre_grasp_approach`` - This is used to define the direction from which to approach the object and the distance to travel.
-* ``moveit_msgs/GripperTranslation post_grasp_retreat`` - This is used to define the direction in which to move once the object is grasped and the distance to travel.
-* ``moveit_msgs/GripperTranslation post_place_retreat`` - This is used to define the direction in which to move once the object is placed at some location and the distance to travel.
+* ``trajectory_msgs/JointTrajectory pre_grasp_posture`` - 把持実行前のend effector group内のジョイントの軌道位置を定義
+* ``trajectory_msgs/JointTrajectory grasp_posture`` - 物体を把持するためのend effector group内のジョイントの軌道位置を定義
+* ``geometry_msgs/PoseStamped grasp_pose`` - 把持を実行する際のエンドエフェクタの位置姿勢
+* ``moveit_msgs/GripperTranslation pre_grasp_approach`` - 物体に近づくときの方向と移動距離を定義
+* ``moveit_msgs/GripperTranslation post_grasp_retreat`` - 物体を把持した後に動く方向と移動距離を定義
+* ``moveit_msgs/GripperTranslation post_place_retreat`` - 物体をある位置に置いた後に移動する向きと移動距離を定義
 
 The Entire Code
 ---------------
 The entire code can be seen :codedir:`here <pick_place>` in the moveit_tutorials GitHub project.
+
+コード全容
+---------------
+コード全体は moveit_tutorials のGitHubリポジトリ内の:codedir:`こちら<pick_place>`から確認出来ます．
 
 .. |br| raw:: html
 
